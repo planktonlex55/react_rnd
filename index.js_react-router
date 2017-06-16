@@ -1,0 +1,82 @@
+//v4 react-router
+// https://stackoverflow.com/questions/41699003/moving-from-react-router-3-x-to-4-x/44583908#44583908
+// nested routes: https://stackoverflow.com/questions/41474134/nested-routes-with-react-router-v4?rq=1
+
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Switch, Redirect, Route} from 'react-router';
+import {BrowserRouter, Link} from 'react-router-dom';
+
+
+//let { BrowserRouter, Switch, Redirect, Route, Link } = ReactRouter;
+
+const Main = () =>
+  <BrowserRouter>
+    <App>
+      <Switch>
+        <Route exact path='/' component={Home}/>
+        <Route path='/map' component={Map}/>
+        <Route path='/settings' component={Settings}/>
+        <Route path='/foo' component={Foo}/>
+        <Route component={NotFound}/>
+      </Switch>
+    </App>
+  </BrowserRouter>
+
+const App = props =>
+  <div>
+    <Navigation>
+      <Link to='/map'>Map</Link>
+      <Link to='/settings'>Settings</Link>
+      <Link to='/foo'>Foo</Link>
+    </Navigation>
+
+    {props.children}
+
+  </div>
+
+const Navigation = props => <nav {...props} />
+const Home = () => <h1>Home</h1>
+const Map = () => <h1>Map</h1>
+const Settings = () => <h1>Settings</h1>
+const Foo = () => <Redirect to='/' />
+const NotFound = (props) => <h1>404 - Not Found</h1>
+
+ReactDOM.render(<Main />, document.body);
+
+// v3 (old code)
+// import React from 'react';
+// import ReactDOM from 'react-dom';
+//
+// // import {Router, Route, browserHistory} from 'react-router';
+//   import { Switch, Route } from 'react-router-dom';
+// //  const {
+// //   HashRouter,
+// //   Switch,
+// //   Route,
+// //   Link
+// // } = ReactRouterDOM;
+//
+// // import createHistory from 'history/createBrowserHistory';
+//
+// // import App from './App';
+// import One from './One';
+// // import registerServiceWorker from './registerServiceWorker';
+// import './index.css';
+//
+// ReactDOM.render(
+//   // <App />
+//
+//   // <Router history={createHistory}>
+//   // <Router history={browserHistory}>
+//   //   <Route path="/x" component={App}></Route>
+//   // </Router>
+//
+//     <Switch>
+//       <Route exact path='/one' component={One}/>
+//     </Switch>
+//
+//   , document.getElementById('root'));
+//
+//
+// // registerServiceWorker();
