@@ -36,7 +36,7 @@ describe("test suite", () => {
 //      // console.log (wrapper3.find('button').get(0).props);
 //  });
     
-    //VIMP:https://github.com/airbnb/enzyme/tree/master/docs
+    //VIMP:https://github.com/airbnb/enzyme/tree/master/docs !!!!VIMP!!!!
   it("test spec 4: ", () => {
     const wrapper = shallow((
       <div>
@@ -51,8 +51,43 @@ describe("test suite", () => {
       <span>Hello</span>,
       <div>Goodbye</div>,
     ])).toEqual(true);
+
+    console.log('executing 4.5')
+  expect(wrapper.containsAnyMatchingElements([
+    <span>Hello</span>,
+    <div>Goodbye</div>,
+  ])).toEqual(true);
+  
+  
   }); //.containsAllMatchingElements() expects an array of ReactElement, not a selector (like many other methods).
-
-
-
 }); //describe ends
+
+  /*
+ O/p:-
+ 
+ D:\js\react01\p4>npm test
+
+> p4@0.1.0 test D:\js\react01\p4
+> jest
+
+ PASS  src\employee.test.js
+  ? Console
+
+    console.log src\employee.test.js:44
+      executing 4.4
+    console.log src\employee.test.js:51
+      executing 4.5
+
+ PASS  src\App0.test.js
+ PASS  src\App.test.js
+
+Test Suites: 3 passed, 3 total
+Tests:       6 passed, 6 total
+Snapshots:   0 total
+Time:        2.897s
+Ran all test suites.
+
+D:\js\react01\p4>
+  */
+  
+  
