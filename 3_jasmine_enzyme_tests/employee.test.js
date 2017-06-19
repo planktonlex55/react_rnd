@@ -31,9 +31,28 @@ describe("test suite", () => {
         expect(obj1.func1).toHaveBeenCalled();
       });
 
+//  it("test spec 4: ", () => {
+//   const wrapper3 = mount(<button name="tstbutton">xxxxx</button>);
+//      // console.log (wrapper3.find('button').get(0).props);
+//  });
+    
+    //VIMP:https://github.com/airbnb/enzyme/tree/master/docs
   it("test spec 4: ", () => {
-   const wrapper3 = mount(<button name="tstbutton">xxxxx</button>);
-      // console.log (wrapper3.find('button').get(0).props);
-  });
+    const wrapper = shallow((
+      <div>
+        <span className="foo">Hello</span>
+        <div style={{ fontSize: 13 }}>Goodbye</div>
+        <span>Again</span>
+      </div>
+    ));
+
+    console.log('executing 4.4')
+    expect(wrapper.containsAllMatchingElements([
+      <span>Hello</span>,
+      <div>Goodbye</div>,
+    ])).toEqual(true);
+  }); //.containsAllMatchingElements() expects an array of ReactElement, not a selector (like many other methods).
+
+
 
 }); //describe ends
